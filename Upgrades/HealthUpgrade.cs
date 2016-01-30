@@ -12,7 +12,7 @@ public class HealthUpgrade : DropableItem {
             if (ps.LifeUp < level) {
                 ps.LifeUp = level;
 
-                AgentLife al = other.GetComponent<AgentLife>();
+				PlayerLife al = other.GetComponent<PlayerLife>();
                 al.currentLife += 20;
                 switch (level) {
                     case 1:
@@ -25,6 +25,8 @@ public class HealthUpgrade : DropableItem {
                         al.startingLife = 160;
                         break;
                 }
+
+				al.UpdateLifeImage ();
 
             }
             Destroy(gameObject);

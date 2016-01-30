@@ -4,7 +4,8 @@ using System.Collections;
 public class AgentAttackExplode : AgentAttack {
 
 	public GameObject explosionFXPrefab;
-	public float shakeAmount = 20;
+	public float explodeRadius = 5f;
+	public float shakeAmount = 20f;
 
 	protected override AgentLife Attack(){
 		AgentLife agentLife = base.Attack();
@@ -21,7 +22,6 @@ public class AgentAttackExplode : AgentAttack {
 
 		iTween.ShakePosition (Camera.main.gameObject, iTween.Hash ("amount", new Vector3 (shakeAmount, shakeAmount, 0), "time", 1f));
 
-		myLife.currentLife = 0;
 		myLife.Kill();
 	}
 }

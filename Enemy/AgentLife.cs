@@ -11,7 +11,7 @@ public class AgentLife : MonoBehaviour {
 	public float startingLife;
 	public float currentLife;
 
-	protected bool isDead;
+	public bool isDead;
 
 	public GameObject DeathExplosion;
 	public float scaleExplosion = 1f;
@@ -72,10 +72,9 @@ public class AgentLife : MonoBehaviour {
 	/// <summary>
 	/// Permet de détruire l'agent.
 	/// </summary>
-	public void Kill ()
+	public virtual void Kill ()
 	{
 		Death();
-
 	}
 
 	/// <summary>

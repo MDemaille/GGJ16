@@ -23,6 +23,7 @@ public class AgentMovement : MonoBehaviour {
 
 	float timerToFlee = 0f;
 	AgentAttackToxic agentToxic;
+	Animator animator;
 
 	/// <summary>
 	/// Initialise la classe.
@@ -32,6 +33,8 @@ public class AgentMovement : MonoBehaviour {
 		agent = GetComponent<Agent>();
 
 		agentToxic = GetComponent<AgentAttackToxic> ();
+
+		animator = GetComponentInChildren<Animator> ();
 
 		target = GameObject.FindGameObjectWithTag("Player");
 
@@ -44,6 +47,7 @@ public class AgentMovement : MonoBehaviour {
 	/// Vérifie l'état de l'agent et clamp sa position.
 	/// </summary>
 	protected virtual void FixedUpdate () {
+		animator.SetBool ("walking", (agent.state != Agent.ATTACK));
 		
 		if(agent.state == Agent.WIGGLE){
 			Wiggle();
