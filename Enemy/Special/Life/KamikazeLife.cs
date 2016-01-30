@@ -19,6 +19,14 @@ public class KamikazeLife : AgentLife {
 			}
 		}
 
+		GameObject[] boss = GameObject.FindGameObjectsWithTag ("Boss");
+		foreach (GameObject b in boss) {
+
+			if (Vector2.Distance (transform.position, b.transform.position) < agentAttack.explodeRadius && !b.GetComponent<AgentLife>().isDead) {
+				b.GetComponent<AgentLife> ().TakeDamage (agentAttack.attackDamage, Color.red);
+			}
+		}
+
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");
 		if (Vector2.Distance (transform.position, player.transform.position) < agentAttack.explodeRadius) {
 			player.GetComponent<AgentLife> ().TakeDamage (agentAttack.attackDamage, Color.red);
