@@ -12,7 +12,7 @@ public class Shot : MonoBehaviour {
 
         if (other.tag.Equals(tagTarget))
         {
-            other.gameObject.GetComponent<AgentLife>().TakeDamage(damage);
+			other.gameObject.GetComponent<AgentLife>().TakeDamage(damage, Color.red);
             Destroy(gameObject);
         }
     }

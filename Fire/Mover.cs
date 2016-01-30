@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Mover : MonoBehaviour 
 {
 	public float speed = 1.0f;

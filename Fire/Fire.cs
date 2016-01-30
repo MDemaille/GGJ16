@@ -5,16 +5,6 @@ using System.Collections.Generic;
 
 public class Fire : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	public static void ShootDirection(Transform shotSpawn, GameObject shot, Vector2 direction, float speed, float scale, int damageUp)
 	{
 		GameObject tempShot = Instantiate(shot, shotSpawn.position, shotSpawn.rotation) as GameObject;

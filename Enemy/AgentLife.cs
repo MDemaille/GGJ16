@@ -39,13 +39,13 @@ public class AgentLife : MonoBehaviour {
 	/// </summary>
 	/// <param name="amount">Quantité de dégats reçus.</param>
 	/// <param name="virus">Si <c>true</c> alors c'est un virus qui inflige des dégats.</param>
-	public virtual void TakeDamage (int amount)
+	public virtual void TakeDamage (int amount, Color colorHit)
 	{
 		if(isDead)
 			return;
 		
 		currentLife -= amount;
-       StartCoroutine(IsHit(Color.red, 0.1f));
+		StartCoroutine(IsHit(colorHit, 0.1f));
 
 		if(currentLife <= 0)
 		{
