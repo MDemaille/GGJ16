@@ -68,9 +68,9 @@ public class AgentMovement : MonoBehaviour {
 			return;
 		}
 
-		if(Vector2.Distance(agentRigidbody.position, target.transform.position) < distanceToFollow){
+		if(Vector2.Distance(transform.position, target.transform.position) < distanceToFollow){
 
-            if (Vector3.Distance(agentRigidbody.position, target.transform.position) < stoppingDistance){
+			if(Vector3.Distance(transform.position, target.transform.position) < stoppingDistance){
 				agentRigidbody.velocity = Vector2.zero;
 				agent.state = Agent.ATTACK;
 				return;
@@ -98,7 +98,7 @@ public class AgentMovement : MonoBehaviour {
 			return;
 		}
 
-		if(Vector2.Distance(agentRigidbody.position, target.transform.position) < distanceToFollow){
+		if(Vector2.Distance(transform.position, target.transform.position) < distanceToFollow){
 			agent.state = Agent.GOTOENEMY;
 			return;
 		}
