@@ -47,7 +47,7 @@ public class AgentMovement : MonoBehaviour {
 	/// Vérifie l'état de l'agent et clamp sa position.
 	/// </summary>
 	protected virtual void FixedUpdate () {
-		animator.SetBool ("walking", (agent.state != Agent.ATTACK));
+		//animator.SetBool ("walking", (agent.state != Agent.ATTACK));
 		
 		if(agent.state == Agent.WIGGLE){
 			Wiggle();

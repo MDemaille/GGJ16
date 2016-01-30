@@ -10,6 +10,11 @@ public class PlayerAttack : MonoBehaviour
         GOLDENEGG
     }
 
+   
+    public bool goldenEggBoost = false;
+    public bool coneBoost = false;
+    
+
     public GameObject goldenEgg;
     public GameObject basicEgg;
 
@@ -38,15 +43,37 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
+
+        /*if (speedBoost)
+        {
+
+        }*/
 
        if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
             Vector3 toPointCursor = Camera.main.ScreenToWorldPoint(Input.mousePosition) - shotSpawn.position;
 
             nextFire = Time.time + fireRate;
-            switch (weapon) {
+
+            if (goldenEggBoost)
+            {
+                Fire.ShootDirection(shotSpawn, goldenEgg, toPointCursor, shotSpeed, shotScale, damageUp);
+                if(coneBoost)
+                    Fire.ShootCone(shotSpawn, goldenEgg, toPointCursor, 2, shotSpeed, 70, 1.0f, damageUp);
+
+            }
+            else
+            {
+                Fire.ShootDirection(shotSpawn, basicEgg, toPointCursor, shotSpeed, shotScale, damageUp);
+                if (coneBoost)
+                    Fire.ShootCone(shotSpawn, basicEgg, toPointCursor, 2, shotSpeed, 70, 1.0f, damageUp);
+            }
+
+            
+
+
+
+            /*switch (weapon) {
                 case (Weapon.BASICEGG):
                     Fire.ShootDirection(shotSpawn, basicEgg, toPointCursor, shotSpeed, shotScale, damageUp);
                     break;
@@ -60,9 +87,9 @@ public class PlayerAttack : MonoBehaviour
                     else
                         nextGoldenEgg--;
 
-                    break;
+                    break;*/
 
-            }
+        }
 
            
             
@@ -72,4 +99,3 @@ public class PlayerAttack : MonoBehaviour
 
         }
     }
-}
