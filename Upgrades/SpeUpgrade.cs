@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpeUpgrade : MonoBehaviour {
+public class SpeUpgrade : DropableItem {
 
     public int level = 1;
 
-    void OnTriggerEnter2D(Collider2D other) {
+    override
+    public void OnTriggerEnter2D(Collider2D other) {
         PlayerScript ps = other.GetComponent<PlayerScript>();
         if (ps != null) {
             if (ps.SpeUp < level) {

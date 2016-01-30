@@ -7,10 +7,10 @@ public class PlayerScript : MonoBehaviour {
     //private enum SpeedUpgrades { NONE, SPE1, SPE2, SPE3 };
     //private enum DamageUpgrades { NONE, DMG1, DMG2, DMG3 };
 
-    private int lifeUp;
-    private int speUp;
-    private int dmgUp;
-    private int rateUp;
+    public int lifeUp;
+    public int speUp;
+    public int dmgUp;
+    public int rateUp;
 
     //private Animator animator;
 
@@ -24,13 +24,13 @@ public class PlayerScript : MonoBehaviour {
     }
 
     public int LifeUp {
-        get { return dmgUp; }
-        set { dmgUp = value; }
+        get { return lifeUp; }
+        set { lifeUp = value; }
     }
 
     public int SpeUp {
-        get { return dmgUp; }
-        set { dmgUp = value; }
+        get { return speUp; }
+        set { speUp = value; }
     }
 
     public int DmgUp {
@@ -39,7 +39,7 @@ public class PlayerScript : MonoBehaviour {
     }
 
     public int RateUp {
-        get { return dmgUp; }
-        set { dmgUp = value; }
+        get { return rateUp; }
+        set { rateUp = value; }
     }
 }

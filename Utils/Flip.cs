@@ -13,8 +13,9 @@ public class Flip : MonoBehaviour {
 
 
 	// Update is called once per frame
-	void Update () {
-		if(transform.parent.GetComponent<Rigidbody2D> ().velocity.normalized.x < -flip){
+	void FixedUpdate () {
+
+        if (transform.parent.GetComponent<Rigidbody2D> ().velocity.normalized.x < -flip){
 			if(axeFlip == Axe.X){
 				transform.localScale = new Vector3(-1,1,1);
 			}else if(axeFlip == Axe.Y){

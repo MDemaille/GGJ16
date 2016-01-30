@@ -9,7 +9,7 @@ public class Free2DMovement : MovementScript {
 	
 	// Use this for initialization
 	void Start () {
-		animator = GetComponent<Animator> ();
+		animator = GetComponentInChildren<Animator> ();
 		rb2d = GetComponent<Rigidbody2D> ();
 	}
 	
@@ -18,7 +18,12 @@ public class Free2DMovement : MovementScript {
 		float inputX = Input.GetAxisRaw ("Horizontal");
 		float inputY = Input.GetAxisRaw ("Vertical");
         direction = new Vector2 (inputX , inputY);
-	}
+
+        if(direction != Vector2.zero)
+            animator.SetBool("walking", true);
+        else
+            animator.SetBool("walking", false);
+    }
 	
 	void FixedUpdate() {
 		rb2d.velocity = new Vector2 (direction.x * speed, direction.y * speed)*Time.fixedDeltaTime;
