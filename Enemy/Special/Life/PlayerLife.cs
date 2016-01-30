@@ -51,6 +51,23 @@ public class PlayerLife : AgentLife {
 		}
 
 		float percentageLife = (float)currentLife / (float)startingLife;
+		StartCoroutine (CoroutineLife (percentageLife));
+	}
+
+	IEnumerator CoroutineLife(float percentageLife) {
+
+		float percent = cellLife.fillAmount;
+
+		float p;
+		float elapsedTime = 0f;
+		while (elapsedTime < 1f) {
+			p = Mathf.Lerp(percent, percentageLife, elapsedTime);
+			cellLife.fillAmount = p;
+			cellLife.color = Color.Lerp(Color.red, Color.green, p);
+			elapsedTime += Time.deltaTime;
+			yield return null;
+		}
+
 		cellLife.fillAmount = percentageLife;
 		cellLife.color = Color.Lerp(Color.red, Color.green, percentageLife);
 	}
