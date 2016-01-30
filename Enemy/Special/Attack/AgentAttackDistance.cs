@@ -30,6 +30,12 @@ public class AgentAttackDistance : AgentAttack {
 	/// </summary>
 	protected override AgentLife Attack ()
 	{
+		if (myMovement.target == null) {
+			myMovement.agentRigidbody.velocity = Vector2.zero;
+			agent.state = Agent.NONE;
+			return null;
+		}
+
 		Vector3 diff = myMovement.target.transform.position - transform.position;
 		float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 		myMovement.agentRigidbody.rotation = rot_z;

@@ -54,6 +54,12 @@ public class AgentAttack : MonoBehaviour {
 	/// </summary>
 	protected virtual AgentLife Attack ()
 	{
+		if (myMovement.target == null) {
+			myMovement.agentRigidbody.velocity = Vector2.zero;
+			agent.state = Agent.NONE;
+			return null;
+		}
+
 		if(timer < timeBetweenAttacks || Vector3.Distance(myMovement.agentRigidbody.position, myMovement.target.transform.position) > myMovement.stoppingDistance || myLife.currentLife <= 0)
 		{
 			agent.state = Agent.WIGGLE;
@@ -62,12 +68,13 @@ public class AgentAttack : MonoBehaviour {
 
 		myMovement.agentRigidbody.velocity = Vector2.zero;
 
-		timer = 0f;
-
 		AgentLife enemyLife = myMovement.target.GetComponent<AgentLife>();
 		if (enemyLife != null) {
 			if (enemyLife.currentLife > 0) {
-				enemyLife.TakeDamage (attackDamage);
+
+				timer = 0f;
+
+				enemyLife.TakeDamage (attackDamage, Color.red);
 				if (impactAttack != null) {
 					Instantiate (impactAttack, myMovement.target.transform.position, Quaternion.identity);
 				}

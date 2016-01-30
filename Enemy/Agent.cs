@@ -6,6 +6,6 @@ using System.Collections;
 /// </summary>
 public class Agent : MonoBehaviour {
 	
-	public static int NONE = -1, WIGGLE = 0, GOTOENEMY = 1, ATTACK = 2;
+	public static int NONE = -1, WIGGLE = 0, GOTOENEMY = 1, ATTACK = 2, FLEE = 3;
 	public int state;
 }
