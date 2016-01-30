@@ -6,12 +6,6 @@ public class CameraFollow : MonoBehaviour {
     public Transform mainTarget;
 	public float smoothing = 1.5f;
 
-	Vector3 offset;
-
-	void Start() {
-		offset = transform.position - mainTarget.position;
-	}
-
 	void FixedUpdate() {
         Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
