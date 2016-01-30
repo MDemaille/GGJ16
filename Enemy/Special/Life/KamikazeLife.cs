@@ -24,6 +24,6 @@ public class KamikazeLife : AgentLife {
 			player.GetComponent<AgentLife> ().TakeDamage (agentAttack.attackDamage, Color.red);
 		}
 
-
+		GetComponent<AgentAttackExplode> ().StartExplosion ();
 	}
 }
