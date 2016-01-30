@@ -10,6 +10,11 @@ public class Shot : MonoBehaviour {
     public void OnTriggerEnter2D(Collider2D other)
     {
 
+        if (other.tag.Equals("Environnement"))
+        {
+            Destroy(gameObject);
+        }
+
         if (other.tag.Equals(tagTarget))
         {
 			other.gameObject.GetComponent<AgentLife>().TakeDamage(damage, Color.red);

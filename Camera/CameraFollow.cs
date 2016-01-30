@@ -10,6 +10,13 @@ public class CameraFollow : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        if (mainTarget == null)
+        {
+            enabled = false;
+            return;
+        }
+
         Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         mouse = new Vector3((mouse.x - mainTarget.position.x) * 0.2f, (mouse.y - mainTarget.position.y) * 0.2f, mouse.z);
