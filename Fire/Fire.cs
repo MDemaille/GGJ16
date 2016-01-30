@@ -11,7 +11,10 @@ public class Fire : MonoBehaviour {
 		tempShot.transform.localScale *= scale;
 		tempShot.GetComponent<Mover>().direction = direction;
 		tempShot.GetComponent<Mover>().speed = speed;
-        tempShot.GetComponent<Shot>().damage += damageUp;
+
+		if (tempShot.GetComponent<Shot> () != null) {
+			tempShot.GetComponent<Shot>().damage += damageUp;
+		}
 	}
 
 	public static void ShootRandomCone(Transform shotSpawn, GameObject shot, Vector2 direction, int nbShots, float inaccuracy ,float speed, float scale, int damageUp)

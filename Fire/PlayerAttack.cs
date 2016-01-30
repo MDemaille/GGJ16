@@ -13,6 +13,8 @@ public class PlayerAttack : MonoBehaviour
     public GameObject goldenEgg;
     public GameObject basicEgg;
 
+	public GameObject missilePoussin;
+
     public Transform shotSpawn;
 
     public float shotSpeed;
@@ -39,37 +41,36 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         
-        
-
-       if (Input.GetButton("Fire1") && Time.time > nextFire)
-        {
-            Vector3 toPointCursor = Camera.main.ScreenToWorldPoint(Input.mousePosition) - shotSpawn.position;
-
+		Vector3 toPointCursor = Camera.main.ScreenToWorldPoint(Input.mousePosition) - shotSpawn.position;
+       
+		if (Input.GetButton("Fire1") && Time.time > nextFire)
+       {
             nextFire = Time.time + fireRate;
-            switch (weapon) {
-                case (Weapon.BASICEGG):
-                    Fire.ShootDirection(shotSpawn, basicEgg, toPointCursor, shotSpeed, shotScale, damageUp);
-                    break;
-                case (Weapon.GOLDENEGG):
-                    Fire.ShootCone(shotSpawn, basicEgg, toPointCursor, 2, shotSpeed, 70, 1.0f, damageUp);
-                    if (nextGoldenEgg <= 0)
-                    {
-                        Fire.ShootDirection(shotSpawn, goldenEgg, toPointCursor, shotSpeed, shotScale, damageUp);
-                        nextGoldenEgg = goldenEggFrequency;
-                    }
-                    else
-                        nextGoldenEgg--;
+			switch (weapon) {
+			case (Weapon.BASICEGG):
+				Fire.ShootDirection (shotSpawn, basicEgg, toPointCursor, shotSpeed, shotScale, damageUp);
+				break;
+			case (Weapon.GOLDENEGG):
+				Fire.ShootCone (shotSpawn, basicEgg, toPointCursor, 2, shotSpeed, 70, 1.0f, damageUp);
+				if (nextGoldenEgg <= 0) {
+					Fire.ShootDirection (shotSpawn, goldenEgg, toPointCursor, shotSpeed, shotScale, damageUp);
+					nextGoldenEgg = goldenEggFrequency;
+				} else
+					nextGoldenEgg--;
 
-                    break;
+				break;
 
-            }
+			}
+
+		}else if(Input.GetButton("Fire2") && SecondaryWeapon.secondaryWeaponReady){
+			Fire.ShootDirection (shotSpawn, missilePoussin, toPointCursor, shotSpeed, 1f, 0);
+			SecondaryWeapon.Reset ();
+		}
 
            
             
             //Fire.ShootCone(shotSpawn, shotToFire, toPointCursor, 4, shotSpeed * 1.1f, 60, 0.9f);
            // Fire.ShootRandomCircle(shotSpawn, shotToFire, toPointCursor, 10, 1.0f, shotSpeed, 1.0f);
             //Fire.ShootCircle(shotSpawn, shotToFire, 10, 0, shotSpeed, 1.0f);
-
-        }
     }
 }

@@ -9,7 +9,6 @@ public class Mover : MonoBehaviour
 	public Vector2 direction;
 	
 
-
 	void Start()
 	{
 		if (direction == Vector2.zero) 
