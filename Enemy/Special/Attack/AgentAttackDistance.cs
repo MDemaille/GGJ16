@@ -41,7 +41,7 @@ public class AgentAttackDistance : AgentAttack {
 		myMovement.agentRigidbody.rotation = rot_z;
 		myMovement.agentRigidbody.velocity = Vector2.zero;
 
-		if(timer < timeBetweenAttacks || Vector3.Distance(myMovement.transform.position, myMovement.target.transform.position) > myMovement.stoppingDistance || myLife.currentLife <= 0)
+		if(timer < timeBetweenAttacks || Vector3.Distance(myMovement.agentRigidbody.position, myMovement.target.transform.position) > myMovement.stoppingDistance || myLife.currentLife <= 0)
 		{
 			agent.state = Agent.WIGGLE;
 			return null;
