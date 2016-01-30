@@ -8,10 +8,8 @@ public class AgentAttackExplode : AgentAttack {
 	public float shakeAmount = 20f;
 
 	protected override AgentLife Attack(){
-		AgentLife agentLife = base.Attack();
 		Explode();
-
-		return agentLife;
+		return null;
 	}
 
 	void Explode(){
