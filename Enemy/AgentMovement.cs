@@ -70,7 +70,7 @@ public class AgentMovement : MonoBehaviour {
 
 		if(Vector2.Distance(agentRigidbody.position, target.transform.position) < distanceToFollow){
 
-			if(Vector3.Distance(agentRigidbody.position, target.transform.position) < stoppingDistance){
+            if (Vector3.Distance(agentRigidbody.position, target.transform.position) < stoppingDistance){
 				agentRigidbody.velocity = Vector2.zero;
 				agent.state = Agent.ATTACK;
 				return;

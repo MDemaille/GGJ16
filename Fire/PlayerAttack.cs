@@ -10,13 +10,16 @@ public class PlayerAttack : MonoBehaviour
         GOLDENEGG
     }
 
-   
+
     public bool goldenEggBoost = false;
     public bool coneBoost = false;
-    
+    public bool missilePoussinBoost = false;
+
 
     public GameObject goldenEgg;
     public GameObject basicEgg;
+
+    public GameObject missilePoussin;
 
     public Transform shotSpawn;
 
@@ -43,22 +46,17 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        /*if (speedBoost)
+        Vector3 toPointCursor = Camera.main.ScreenToWorldPoint(Input.mousePosition) - shotSpawn.position;
+        if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
-
-        }*/
-
-       if (Input.GetButton("Fire1") && Time.time > nextFire)
-        {
-            Vector3 toPointCursor = Camera.main.ScreenToWorldPoint(Input.mousePosition) - shotSpawn.position;
+           
 
             nextFire = Time.time + fireRate;
 
             if (goldenEggBoost)
             {
                 Fire.ShootDirection(shotSpawn, goldenEgg, toPointCursor, shotSpeed, shotScale, damageUp);
-                if(coneBoost)
+                if (coneBoost)
                     Fire.ShootCone(shotSpawn, goldenEgg, toPointCursor, 2, shotSpeed, 70, 1.0f, damageUp);
 
             }
@@ -69,33 +67,14 @@ public class PlayerAttack : MonoBehaviour
                     Fire.ShootCone(shotSpawn, basicEgg, toPointCursor, 2, shotSpeed, 70, 1.0f, damageUp);
             }
 
-            
-
-
-
-            /*switch (weapon) {
-                case (Weapon.BASICEGG):
-                    Fire.ShootDirection(shotSpawn, basicEgg, toPointCursor, shotSpeed, shotScale, damageUp);
-                    break;
-                case (Weapon.GOLDENEGG):
-                    Fire.ShootCone(shotSpawn, basicEgg, toPointCursor, 2, shotSpeed, 70, 1.0f, damageUp);
-                    if (nextGoldenEgg <= 0)
-                    {
-                        Fire.ShootDirection(shotSpawn, goldenEgg, toPointCursor, shotSpeed, shotScale, damageUp);
-                        nextGoldenEgg = goldenEggFrequency;
-                    }
-                    else
-                        nextGoldenEgg--;
-
-                    break;*/
-
         }
 
-           
-            
-            //Fire.ShootCone(shotSpawn, shotToFire, toPointCursor, 4, shotSpeed * 1.1f, 60, 0.9f);
-           // Fire.ShootRandomCircle(shotSpawn, shotToFire, toPointCursor, 10, 1.0f, shotSpeed, 1.0f);
-            //Fire.ShootCircle(shotSpawn, shotToFire, 10, 0, shotSpeed, 1.0f);
-
+        if (Input.GetButton("Fire2") && SecondaryWeapon.secondaryWeaponReady && missilePoussinBoost)
+        {
+            Fire.ShootDirection(shotSpawn, missilePoussin, toPointCursor, shotSpeed, 1f, 0);
+            SecondaryWeapon.Reset();
         }
+
     }
+}
+
