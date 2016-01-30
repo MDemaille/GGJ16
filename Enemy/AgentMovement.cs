@@ -107,7 +107,7 @@ public class AgentMovement : MonoBehaviour {
 	/// <summary>
 	/// Permet à l'agent de fuir face à l'ennemi
 	/// </summary>
-	void Flee(){
+	protected virtual void Flee(){
 		if (target == null) {
 			agentRigidbody.velocity = Vector2.zero;
 			agent.state = Agent.NONE;
