@@ -5,12 +5,14 @@ public class PouleManager : MonoBehaviour {
 
 	public GameObject prefab;
 
-	public float timeBetweenChangeFrequency = 5f;
+	public int nbPouleToKill = 10;
+
 	public float frequency = 2f;
 	public float decreaseFrequency = 0.2f;
 	public float radiusSpawn = 15f;
 
 	float changeFrequency = 0f;
+	int pouleKill = 0;
 
 	bool finish = false;
 
@@ -26,7 +28,7 @@ public class PouleManager : MonoBehaviour {
 			enabled = false;
 		}
 
-		changeFrequency += Time.deltaTime;
+		/*changeFrequency += Time.deltaTime;
 		if (changeFrequency > timeBetweenChangeFrequency) {
 			if (frequency == 0.1f) {
 				Stop ();
@@ -35,7 +37,7 @@ public class PouleManager : MonoBehaviour {
 
 			changeFrequency = 0f;
 			frequency -= 0.1f;
-		}
+		}*/
 	}
 
 	IEnumerator SpawnPoule(){
@@ -56,6 +58,20 @@ public class PouleManager : MonoBehaviour {
 		enabled = false;
 
 		finish = true;
+	}
+
+	public void DeadPoule(){
+		pouleKill++;
+		if (pouleKill >= nbPouleToKill) {
+			if (nbPouleToKill > 40) {
+				Stop ();
+				return;
+			}
+
+			pouleKill = 0;
+			nbPouleToKill += 5;
+			frequency -= decreaseFrequency;
+		}
 	}
 
 	public bool waveFinish {
