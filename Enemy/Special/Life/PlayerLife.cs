@@ -35,6 +35,14 @@ public class PlayerLife : AgentLife {
 
 		if(currentLife <= 0)
 		{
+			if(cellLife.enabled == false){
+				cellLife.enabled = true;
+			}
+
+			float percentageLife = (float)currentLife / (float)startingLife;
+			cellLife.fillAmount = percentageLife;
+			cellLife.color = Color.Lerp(Color.red, Color.green, percentageLife);
+
 			Death ();
 			return;
 		}

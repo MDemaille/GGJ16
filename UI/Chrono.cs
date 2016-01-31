@@ -8,10 +8,32 @@ public class Chrono : MonoBehaviour {
 
 	float time = 0f;
 
+	int hours;
+	int minutes;
+	int seconds;
+
 	// Update is called once per frame
 	void Update () {
 		time += Time.deltaTime;
-		chronoText.text = time.ToString();
+
+		if (time > 60f) {
+			minutes = (int)time / 60;
+			seconds = (int)time - (minutes * 60);
+		} else {
+			seconds = (int)time;
+			minutes = 0;
+			hours = 0;
+		}
+		if (minutes > 60) {
+			hours = minutes / 60;
+			minutes -= 60;
+		}
+
+		string hoursStr = (hours < 10) ? "0" + hours.ToString() : hours.ToString();
+		string minutesStr = (minutes < 10) ? "0" + minutes.ToString() : minutes.ToString();
+		string secondsStr = (seconds < 10) ? "0" + seconds.ToString() : seconds.ToString();
+
+		chronoText.text = hoursStr + ":" + minutesStr + ":" + secondsStr;
 	}
 
 	/// <summary>

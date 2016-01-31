@@ -12,8 +12,9 @@ public class KamikazeLife : AgentLife {
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 		foreach (GameObject enemy in enemies) {
 
-			if (enemy.gameObject != gameObject) {
-				if (Vector2.Distance (transform.position, enemy.transform.position) < agentAttack.explodeRadius && !enemy.GetComponent<AgentLife>().isDead) {
+			if (enemy.gameObject != gameObject && enemy.GetComponent<AgentLife>() != null) {
+
+				if (Vector2.Distance (transform.position, enemy.transform.position) < agentAttack.explodeRadius && !enemy.GetComponent<AgentLife> ().isDead) {
 					enemy.GetComponent<AgentLife> ().TakeDamage (agentAttack.attackDamage, Color.red);
 				}
 			}

@@ -19,14 +19,13 @@ public class AgentAttackExplode : AgentAttack {
 		myLife.Kill();
 	}
 
-    public void StartExplosion() {
-        if (explosionFXPrefab != null) { 
-        GameObject explosion = Instantiate(explosionFXPrefab, transform.position, Quaternion.identity) as GameObject;
+	public void StartExplosion(){
+		if (explosionFXPrefab != null) {
+			GameObject explosion = Instantiate (explosionFXPrefab, transform.position, Quaternion.identity) as GameObject;
+			//explosion.GetComponent<AudioSource> ().pitch = Random.Range (0.9f, 1.1f);
+			Destroy (explosion, 10f);
+		}
 
-        explosion.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-        Destroy(explosion, 10f);
-        }
-
-		iTween.ShakePosition (Camera.main.gameObject, iTween.Hash ("amount", new Vector3 (shakeAmount, shakeAmount, 0), "time", 1f));
+		iTween.ShakePosition (Camera.main.gameObject, iTween.Hash ("amount", new Vector3 (shakeAmount, shakeAmount, 0), "time", 0.5f));
 	}
 }
