@@ -35,6 +35,7 @@ public class PlayerLife : AgentLife {
 
 		if(currentLife <= 0)
 		{
+			UpdateLifeImage();
 			Death ();
 			return;
 		}
