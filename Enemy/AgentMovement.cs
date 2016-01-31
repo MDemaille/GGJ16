@@ -16,8 +16,7 @@ public class AgentMovement : MonoBehaviour {
 	public float stoppingDistance;
 
 	protected Agent agent;
-
-	[HideInInspector] public GameObject target;
+     public GameObject target;
 	[HideInInspector] public Rigidbody2D agentRigidbody;
 
 

@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
         GOLDENEGG
     }
 
+    public GameObject UIPoussin;
 
     public bool goldenEggBoost = false;
     public bool coneBoost = false;

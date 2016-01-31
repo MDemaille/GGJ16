@@ -22,17 +22,7 @@ public class AgentLife : MonoBehaviour {
 		isDead = false;
 	}
 
-	public void AddLife(int amount){
-		if(currentLife == startingLife){
-			return;
-		}
-		
-		if(currentLife + amount < startingLife){
-			currentLife += amount;
-		}else{
-			currentLife = startingLife;
-		}
-	}
+
 
 	/// <summary>
 	/// Inflige des dégats à l'agent.

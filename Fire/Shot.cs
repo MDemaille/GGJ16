@@ -15,9 +15,18 @@ public class Shot : MonoBehaviour {
             Destroy(gameObject);
         }
 
+        if (tagTarget.Equals("Enemy"))
+        {
+            if (other.tag.Equals(tagTarget) || other.tag.Equals("Boss"))
+            {
+                other.gameObject.GetComponent<AgentLife>().TakeDamage(damage, Color.red);
+                Destroy(gameObject);
+            }
+        }
+
         if (other.tag.Equals(tagTarget))
         {
-			other.gameObject.GetComponent<AgentLife>().TakeDamage(damage, Color.red);
+            other.gameObject.GetComponent<AgentLife>().TakeDamage(damage, Color.red);
             Destroy(gameObject);
         }
     }
