@@ -29,6 +29,11 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	public void Retry(){
+		Time.timeScale = 1f;
+		Application.LoadLevel (Application.loadedLevel);
+	}
+
 	public void Quit(){
 		if (Application.isEditor) {
 			Debug.Break ();

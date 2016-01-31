@@ -14,11 +14,18 @@ public class PouleManager : MonoBehaviour {
 
 	bool finish = false;
 
+	PlayerLife player;
+
 	void Start(){
+		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerLife> ();;
 		StartCoroutine (SpawnPoule ());
 	}
 
 	void Update(){
+		if (player.isDead) {
+			enabled = false;
+		}
+
 		changeFrequency += Time.deltaTime;
 		if (changeFrequency > timeBetweenChangeFrequency) {
 			if (frequency == 0.1f) {
@@ -33,6 +40,10 @@ public class PouleManager : MonoBehaviour {
 
 	IEnumerator SpawnPoule(){
 		while (true) {
+			if (player.isDead) {
+				yield break;
+			}
+
 			Vector2 pos = Random.insideUnitCircle * radiusSpawn;
 			Instantiate (prefab, pos, Quaternion.identity);
 
