@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayGame : MonoBehaviour {
 
-	public void Play(int i){
-		Application.LoadLevel(i);
+	public void PlayScene(int i){
+		SceneManager.LoadScene(i);
 	}
 }
